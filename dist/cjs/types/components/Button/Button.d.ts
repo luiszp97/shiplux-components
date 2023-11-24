@@ -1,4 +1,4 @@
-import "../../../taildwind.css";
+import "../../../main.css";
 interface ButtonProps {
     size?: "xs" | "sm" | "md" | "lg";
     label: string;

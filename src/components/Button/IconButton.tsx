@@ -1,5 +1,5 @@
 import { FC } from "react"
-import "../../../taildwind.css"
+import "../../../main.css"
 
 interface IconButtonProps {
 	icon: string

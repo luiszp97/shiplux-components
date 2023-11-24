@@ -1,6 +1,6 @@
 //Components
 import { Typography } from "../Typography"
-import "../../../taildwind.css"
+import "../../../main.css"
 
 //Typescript
 interface ButtonProps {

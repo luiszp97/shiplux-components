@@ -1,5 +1,5 @@
 import { useState } from "react"
-import "../../../taildwind.css"
+import "../../../main.css"
 export const ChangeThemeButton = () => {
 	const [isDarkMode, setIsDarkMode] = useState(false)
 	return (

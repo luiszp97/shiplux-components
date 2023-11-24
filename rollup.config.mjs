@@ -118,63 +118,6 @@
 //   // external: [/\.css$/],
 // }]
 
-// import resolve from "@rollup/plugin-node-resolve";
-// import external from "rollup-plugin-peer-deps-external";
-// import commonjs from "@rollup/plugin-commonjs";
-// import typescript from "@rollup/plugin-typescript";
-// import postcss from "rollup-plugin-postcss";
-// import dts from "rollup-plugin-dts";
-// import css from "rollup-plugin-css-only";
-// import tailwindcss from "tailwindcss";
-// import { nodeResolve } from "@rollup/plugin-node-resolve";
-// import tailwindConfig from "./tailwind.config.js";
-// import packageJson from "./package.json" assert { type: "json" };
-// export default [
-//   {
-//     input: "src/index.ts",
-//     output: [
-//       {
-//         file: packageJson.main,
-//         format: "cjs",
-//         sourcemap: true,
-//       },
-//       {
-//         file: packageJson.module,
-//         format: "esm",
-//         sourcemap: true,
-//       },
-//     ],
-//     plugins: [
-//       external(),
-//       // postcss({ plugins: [tailwindcss(tailwindConfig)] }),
-//       postcss({
-//         config: {
-//           path: "./postcss.config.js",
-//         },
-//         extensions: [".css"],
-//         minimize: true,
-//         inject: {
-//           insertAt: "top",
-//         },
-//       }),
-//       css({ output: "main.css" }),
-//       resolve(),
-//       commonjs(),
-//       typescript({ tsconfig: "./tsconfig.json" }),
-//       // nodeResolve({ extensions: [".css"] }),
-//     ],
-//     external: ["react", "react-dom", "main.css"],
-//   },
-//   {
-//     input: "dist/esm/types/index.d.ts",
-//     output: [{ file: "dist/index.d.ts", format: "esm" }],
-//     plugins: [dts()],
-//   },
-// ];
-
-
-//!! Betsa config
-import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import resolve from "@rollup/plugin-node-resolve";
 import external from "rollup-plugin-peer-deps-external";
 import commonjs from "@rollup/plugin-commonjs";
@@ -183,11 +126,9 @@ import postcss from "rollup-plugin-postcss";
 import dts from "rollup-plugin-dts";
 import css from "rollup-plugin-css-only";
 import tailwindcss from "tailwindcss";
-// import tailwindcss from './src/taildwind.css'
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import tailwindConfig from "./tailwind.config.js";
 import packageJson from "./package.json" assert { type: "json" };
-
 export default [
   {
     input: "src/index.ts",
@@ -204,26 +145,25 @@ export default [
       },
     ],
     plugins: [
-      peerDepsExternal(),
       external(),
+      // postcss({ plugins: [tailwindcss(tailwindConfig)] }),
       postcss({
         config: {
-          path: './postcss.config.js',
+          path: "./postcss.config.js",
         },
         extensions: [".css"],
         minimize: true,
         inject: {
           insertAt: "top",
         },
-        plugins: [tailwindcss(tailwindConfig)]
       }),
-      css({ output: "tailwind.css" }),
+      css({ output: "main.css" }),
       resolve(),
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
-      nodeResolve({ extensions: [".css"] }),
+      // nodeResolve({ extensions: [".css"] }),
     ],
-    external: ["react", "react-dom", "tailwind.css"],
+    external: ["react", "react-dom", "main.css"],
   },
   {
     input: "dist/esm/types/index.d.ts",
@@ -231,4 +171,64 @@ export default [
     plugins: [dts()],
   },
 ];
+
+
+// //!! Betsa config
+// import peerDepsExternal from "rollup-plugin-peer-deps-external";
+// import resolve from "@rollup/plugin-node-resolve";
+// import external from "rollup-plugin-peer-deps-external";
+// import commonjs from "@rollup/plugin-commonjs";
+// import typescript from "@rollup/plugin-typescript";
+// import postcss from "rollup-plugin-postcss";
+// import dts from "rollup-plugin-dts";
+// import css from "rollup-plugin-css-only";
+// import tailwindcss from "tailwindcss";
+// // import tailwindcss from './src/main.css'
+// import { nodeResolve } from "@rollup/plugin-node-resolve";
+// import tailwindConfig from "./tailwind.config.js";
+// import packageJson from "./package.json" assert { type: "json" };
+
+// export default [
+//   {
+//     input: "src/index.ts",
+//     output: [
+//       {
+//         file: packageJson.main,
+//         format: "cjs",
+//         sourcemap: true,
+//       },
+//       {
+//         file: packageJson.module,
+//         format: "esm",
+//         sourcemap: true,
+//       },
+//     ],
+//     plugins: [
+//       peerDepsExternal(),
+//       external(),
+//       postcss({
+//         config: {
+//           path: './postcss.config.js',
+//         },
+//         extensions: [".css"],
+//         minimize: true,
+//         inject: {
+//           insertAt: "top",
+//         },
+//         plugins: [tailwindcss(tailwindConfig)]
+//       }),
+//       css({ output: "tailwind.css" }),
+//       resolve(),
+//       commonjs(),
+//       typescript({ tsconfig: "./tsconfig.json" }),
+//       nodeResolve({ extensions: [".css"] }),
+//     ],
+//     external: ["react", "react-dom", "tailwind.css"],
+//   },
+//   {
+//     input: "dist/esm/types/index.d.ts",
+//     output: [{ file: "dist/index.d.ts", format: "esm" }],
+//     plugins: [dts()],
+//   },
+// ];
 
