@@ -156,12 +156,13 @@ export default [
         inject: {
           insertAt: "top",
         },
+        plugins: [ tailwindcss(tailwindConfig)]
       }),
       css({ output: "main.css" }),
       resolve(),
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
-      // nodeResolve({ extensions: [".css"] }),
+      nodeResolve({ extensions: [".css"] }),
     ],
     external: ["react", "react-dom", "main.css"],
   },
